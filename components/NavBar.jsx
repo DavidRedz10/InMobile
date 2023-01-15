@@ -2,13 +2,18 @@ import Link from 'next/link';
 import { Menu, MenuButton, MenuList, MenuItem, IconButton, Flex, Box, Spacer } from '@chakra-ui/react';
 import { FcMenu, FcHome, FcAbout } from 'react-icons/fc';
 import { BsSearch } from 'react-icons/bs';
-import { FiKey } from 'react-icons/fi';
+import { FiKey, FiCpu} from 'react-icons/fi';
+import Image from 'next/image';
 
 
 const NavBar = () => (
+    
     <Flex p="2" borderBottom="1px" borderColor="gray.100">
-    <Box fontSize='3xl' color='blue.400' fontWeight='bold'>
-        <Link href="/" paddingLeft="2" >InMobile</Link>
+    <Box fontSize='3xl' color='blue.400' fontWeight='bold'> 
+        <Image src='https://freelogo-assets.s3.amazonaws.com/sites/all/themes/freelogoservices/images/structure.jpg' width="100" height="100" alt='Logo' />
+    </Box>
+    <Box fontSize='3xl' color='blue.400' fontWeight='bold' paddingTop="2" >
+    <Link href="/" paddingLeft="2" >InMobile</Link>
     </Box>
     <Spacer></Spacer>
     <Box>
@@ -26,6 +31,9 @@ const NavBar = () => (
                 </Link>
                 <Link href="/search?purpose=for-rent" passHref>
                     <MenuItem icon={<FiKey/>}>Rent Property</MenuItem>
+                </Link>
+                <Link href="/search?purpose=for-rent" passHref>
+                    <MenuItem icon={<FiCpu/>}>Inteligencia Artificial</MenuItem>
                 </Link>
             </MenuList>
         </Menu>
