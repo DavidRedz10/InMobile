@@ -49,7 +49,9 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
 import NavItem from "./NavItem";
-import { Menu, MenuButton, MenuList, MenuItem, IconButton, Flex, Box, Spacer } from '@chakra-ui/react';
+import { WrapItem, Menu, MenuButton, MenuList, MenuItem, IconButton, Flex, Box, Spacer } from '@chakra-ui/react';
+import { Avatar } from '@chakra-ui/react'
+import logo from "../assets/images/logo.png"
 
 const MENU_LIST = [
   { text: "Search", href: "/search" },
@@ -57,16 +59,16 @@ const MENU_LIST = [
   { text: "Rent", href: "/search?purpose=for-rent" },
   { text: "AI", href: "/questions" },
 ];
+
 const Navbar = () => {
   const [navActive, setNavActive] = useState(null);
   const [activeIdx, setActiveIdx] = useState(-1);
-
   return (
     <header>
-      <nav className="nav">
-      <Link legacyBehavior href={"/"}>
-          <a>
-            <h1 className="logo" >CodeWithMarish</h1>
+      <nav className={`nav`}>
+        <Link legacyBehavior href={"/"}>
+          <a>          
+          <Image className="logo" src={logo} />
           </a>
         </Link>
         <div
