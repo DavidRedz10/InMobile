@@ -2,42 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+.logo{
+  mix-blend-mode: multiply;
+  height: 30%;
+  width: 30%;
+}
 
-html,
-body {
-  padding: 0;
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap');
+* {
   margin: 0;
-  font-family: Montserrat;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Work Sans', sans-serif;
 }
-
-a {
-  color: inherit;
+a{
   text-decoration: none;
-  align-items: center;
-  align-content: center;
+  color: inherit;
+  
 }
-
 header{
   position: sticky;
   z-index: 30;
   top: 0;
 }
-
-
 nav{
   display: flex;
   padding: 16px;
   justify-content: space-between;
   align-items: center;
   background-color: #f1f1f1;
-  border-bottom-left-radius: 50px ;
-  border-bottom-right-radius: 50px ;
 }
 .nav__menu-bar{
   display: flex;
   flex-direction: column;
   row-gap: 6px;
   cursor: pointer;
+}
+.nav__menu-bar div{
+  width: 40px;
+  height: 4px;
+  background-color: black;
+  border-radius: 2px;
 }
 .nav__menu-list{
   display: flex;
@@ -56,29 +63,21 @@ nav{
   right: 0;
 }
 .nav__link{
-  font-weight: bold;
   font-size: 18px; 
   position: relative;
   transition: all 0.2s;
-  font-family: Andale Mono, monospace;
 }
-.nav__link:hover{
-  font-weight: bold;
- }
 
- .center{
+.nav__link:hover{
+ font-weight: bold;
+}
+
+.center{
   min-height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.logo{
-  mix-blend-mode: multiply;
-  height: 5rem;
-  width: 13rem;
-}
-
 @media screen and (min-width: 768px) {
   .nav__menu-bar{
     display: none;
