@@ -4,7 +4,7 @@ import { InputBox } from "../components/InputBox";
 import { Button } from '@chakra-ui/react'
 
 const configuration = new Configuration({
-    apiKey: process.env.REACT,
+    apiKey: process.env.NEXT_PUBLIC_REACT,
 });
 
 const openai = new OpenAIApi(configuration);
