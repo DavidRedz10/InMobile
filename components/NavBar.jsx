@@ -55,7 +55,7 @@ const MENU_LIST = [
   { text: "Search", href: "/search" },
   { text: "Sale", href: "/search?purpose=for-sale" },
   { text: "Rent", href: "/search?purpose=for-rent" },
-  { text: "AI", href: "/questions" },
+  { text: "AI", href: "/dalle" },
 ];
 
 
