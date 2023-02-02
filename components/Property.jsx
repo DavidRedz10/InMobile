@@ -8,7 +8,7 @@ import { GoVerified } from 'react-icons/go';
 import millify from 'millify';
 
 import DefaultImage from '../assets/images/house.jpg';
-import { Card, CardBody } from '@chakra-ui/react';
+import { Card, Badge } from '@chakra-ui/react';
 
 const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, baths, area, agency, isVerified, externalID  } }) => (
   
@@ -18,7 +18,7 @@ const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, 
       <Box>
         <Image style={{borderStartEndRadius: '40px', borderTopLeftRadius: '40px', borderBottomLeftRadius: '40px', overflow: 'hidden' }} alt="post" src={coverPhoto ? coverPhoto.url : DefaultImage}  width={400} height={260} />
       </Box>
-      <Box w="full">
+      <Box w="full" >
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
             <Box paddingRight='3' color='green.400'>{isVerified && <GoVerified />}</Box>
@@ -29,8 +29,7 @@ const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, 
           </Box>
         </Flex>
         <Flex alignItems='center' p='1' justifyContent='space-between' w='250px' color='blue.400'>
-          {rooms}
-          <FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />
+          {rooms} <FaBed /> | {baths} <FaBath/>  | {millify(area)} sqft <BsGridFill/>
         </Flex>
         <Text fontSize='lg'>
           {title.length > 30 ? title.substring(0, 30) + '...' : title}

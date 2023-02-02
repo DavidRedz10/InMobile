@@ -17,6 +17,7 @@ const Search = ({ properties }) => {
     <ChakraProvider>
     <Box >
       <Flex
+        borderTopRadius="40px"
         onClick={() => setSearchFilters(!searchFilters)}
         cursor='pointer'
         bg='gray.100'

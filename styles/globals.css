@@ -12,7 +12,8 @@
   font-family: "Raleway";
   font-size: bold;
   margin-bottom: 2%;
-  width: auto;
+  align: center;
+  justify-content: center;
 }
 
 .label-input-pair {
@@ -34,7 +35,6 @@
   bottom: 0;
   left: 0;
   overflow-y: auto;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,7 +94,7 @@ nav{
   padding: 16px;
   justify-content: space-between;
   align-items: center;
-  background-color: #f1f1f1;
+  background-color: #FFFEFD;
 }
 .nav__menu-bar{
   display: flex;
@@ -119,7 +119,7 @@ nav{
   padding: 24px 16px;
   transition: all 0.2s;
   min-height: calc(100vh - 60px);
-  background-color: #f1f1f1;
+  background-color: #FFFEFD;
 }
 .nav__menu-list.active{
   right: 0;
