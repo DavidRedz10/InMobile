@@ -8,14 +8,17 @@ import { GoVerified } from 'react-icons/go';
 import millify from 'millify';
 
 import DefaultImage from '../assets/images/house.jpg';
+import { Card, CardBody } from '@chakra-ui/react';
 
 const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, baths, area, agency, isVerified, externalID  } }) => (
-  <Link href={`/property/${externalID}`} passHref>
-    <Flex flexWrap='wrap' w='420px' p='5' paddingTop='0px' justifyContent='flex-start' cursor='pointer' >
+  
+  <Card style={{ borderStartEndRadius: '40px', borderTopLeftRadius: '40px', borderBottomLeftRadius: '40px', overflow: 'hidden' }} variant={'outline'} margin="2" backgroundColor={'gray.50'}>
+  <Link href={`/property/${externalID}`} passHref>   
+    <Flex flexWrap='wrap' w='400px' p='5' justifyContent='flex-start'  cursor='pointer' >
       <Box>
-        <Image style={{borderRadius: '40px', overflow: 'hidden', outline: "solid" , outlineColor: "gray" , outlineWidth: "1.5px" }} alt="post" src={coverPhoto ? coverPhoto.url : DefaultImage}  width={400} height={260} />
+        <Image style={{borderStartEndRadius: '40px', borderTopLeftRadius: '40px', borderBottomLeftRadius: '40px', overflow: 'hidden' }} alt="post" src={coverPhoto ? coverPhoto.url : DefaultImage}  width={400} height={260} />
       </Box>
-      <Box w='full'>
+      <Box w="full">
         <Flex paddingTop='2' alignItems='center' justifyContent='space-between'>
           <Flex alignItems='center'>
             <Box paddingRight='3' color='green.400'>{isVerified && <GoVerified />}</Box>
@@ -33,8 +36,11 @@ const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, 
           {title.length > 30 ? title.substring(0, 30) + '...' : title}
         </Text>
       </Box>
-    </Flex>
+    </Flex>  
   </Link>
+  </Card>
+
+  
 );
 
 export default Property;

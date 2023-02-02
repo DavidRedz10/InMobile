@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image'
-import { Flex, Box, Text, Icon } from '@chakra-ui/react';
+import { Flex, Box, Text, Icon, ChakraProvider } from '@chakra-ui/react';
 import { BsFilter } from 'react-icons/bs';
 
 import Property from '../components/Property';
@@ -14,7 +14,8 @@ const Search = ({ properties }) => {
   const router = useRouter();
 
   return (
-    <Box>
+    <ChakraProvider>
+    <Box >
       <Flex
         onClick={() => setSearchFilters(!searchFilters)}
         cursor='pointer'
@@ -44,6 +45,7 @@ const Search = ({ properties }) => {
         </Flex>
       )}
     </Box>
+    </ChakraProvider>
   );
 };
 
