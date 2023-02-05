@@ -13,7 +13,7 @@ const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms, title
   <Box maxWidth='1000px' margin='auto' p='4'>
     {photos && <ImageScrollbar data={photos} />}
     
-    <Card>
+    <Card marginTop="7">
     <CardHeader paddingTop="10px">
     
     <Box w='full' p='2'>
