@@ -7,11 +7,16 @@ import millify from 'millify';
 
 import { baseUrl, fetchApi } from '../../utils/fetchApi';
 import ImageScrollbar from '../../components/ImageScrollbar';
+import { Card, CardBody, CardHeader } from '@chakra-ui/react';
 
 const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms, title, baths, area, agency, isVerified, description, type, purpose, furnishingStatus, amenities, photos } }) => (
   <Box maxWidth='1000px' margin='auto' p='4'>
     {photos && <ImageScrollbar data={photos} />}
-    <Box w='full' p='6'>
+    
+    <Card>
+    <CardHeader paddingTop="10px">
+    
+    <Box w='full' p='2'>
       <Flex paddingTop='2' alignItems='center'>
         <Box paddingRight='3' color='green.400'>{isVerified && <GoVerified />}</Box>
         <Text fontWeight='bold' fontSize='lg'>
@@ -24,6 +29,10 @@ const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms, title
         {rooms}<FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />
       </Flex>
     </Box>
+    </CardHeader>
+
+
+    <CardBody>
     <Box marginTop='2'>
       <Text fontSize='lg' marginBottom='2' fontWeight='bold'>{title}</Text>
       <Text lineHeight='2' color='gray.600'>{description}</Text>
@@ -44,6 +53,8 @@ const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms, title
         </Flex>
       )}
     </Flex>
+    </CardBody>
+    </Card>
     <Box>
       {amenities.length && <Text fontSize='2xl' fontWeight='black' marginTop='5'>Facilites:</Text>}
         <Flex flexWrap='wrap'>
@@ -56,6 +67,11 @@ const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms, title
           ))}
         </Flex>
     </Box>
+
+              
+
+
+
   </Box>
 );
 
