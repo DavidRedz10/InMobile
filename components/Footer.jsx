@@ -5,8 +5,8 @@ const Footer = () => (
 <div class="container mx-auto" >
     <div class="p-5 bg-gray-100 rounded-lg py-12 m-5">
         <div class="flex flex-col ">
-            <h3 class="text-3xl leading-10 text-blue-400 w-full text-center font-bold">Suscríbete a nuestro boletín para recibir información actualizada</h3>
-            <div class="text-base text-gray-5s00 w-full  md:w-2/4 self-center text-center lg:pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+            <h3 class="text-3xl leading-10 text-blue-400 w-full text-center font-bold">Suscríbete para ver mas</h3>
+            <div class="text-base text-gray-5s00 w-full  md:w-2/4 self-center text-center lg:pt-4">Únase a nuestro boletín informativo y esté al tanto de las últimas propiedades en venta antes que nadie más.</div>
         </div>
         <div class="flex flex-row justify-center space-x-3 py-4">
             <input class="bg-white rounded-lg text-sm px-2 sm:px-3 md:px-8 py-3" type="text" placeholder="email@email.com"/>
