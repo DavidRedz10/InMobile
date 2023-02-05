@@ -13,7 +13,7 @@ const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms, title
   <Box maxWidth='1000px' margin='auto' p='4'>
     {photos && <ImageScrollbar data={photos} />}
     
-    <Card marginTop="7">
+    <Card marginTop="7" variant = "outline" borderRadius="40px">
     <CardHeader paddingTop="10px">
     
     <Box w='full' p='2'>
@@ -23,7 +23,7 @@ const PropertyDetails = ({ propertyDetails: { price, rentFrequency, rooms, title
           AED {price} {rentFrequency && `/${rentFrequency}`}
         </Text>
         <Spacer />
-        <Avatar size='sm' src={agency?.logo?.url}></Avatar>
+        <Avatar size='md' src={agency?.logo?.url}></Avatar>
       </Flex>
       <Flex alignItems='center' p='1' justifyContent='space-between' w='250px' color='blue.400'>
         {rooms}<FaBed /> | {baths} <FaBath /> | {millify(area)} sqft <BsGridFill />
