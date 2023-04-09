@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FaUser } from "react-icons/fa";
 import React, { useState } from "react";
 import logo from "../assets/images/logo.png";
 import NavItem from "./NavItem";
