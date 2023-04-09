@@ -36,9 +36,11 @@ export default function Home({ propertiesForSale, propertiesForRent}) {
       imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
 
-      <Link href="/add" >  
-      <Button  colorScheme='green'>Añade tu propiedad</Button>
+      <Flex justifyContent="center" alignItems="center">
+      <Link href="/add">  
+      <Button colorScheme='green'>Añade tu propiedad</Button>
       </Link>
+      </Flex>
 
       <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
       {propertiesForRent.map((property) => <Property property={property} key={property.id} />)}
@@ -65,7 +67,7 @@ export default function Home({ propertiesForSale, propertiesForRent}) {
 
 export async function getStaticProps() {
   const propertyForSale = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`);
-  const propertyForRent = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=6`);
+  const propertyForRent = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=9`);
 
   return {
     props: {
