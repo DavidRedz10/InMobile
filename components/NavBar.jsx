@@ -21,7 +21,7 @@ const Navbar = () => {
       <nav className={`nav`}>
         <Link legacyBehavior href={"/"}>
           <a>
-            <Image className="logo" src={logo} />
+            <Image className="logo" src={logo} alt="logo" />
           </a>
         </Link>
         <div onClick={() => setNavActive(!navActive)} className={`nav__menu-bar`}>
