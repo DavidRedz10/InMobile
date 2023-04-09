@@ -43,9 +43,6 @@ const Navbar = () => {
             </div>
           ))}
         </div>
-        <NavItem href="/profile">
-          <FaUser />
-        </NavItem>
       </nav>
     </header>
   );
