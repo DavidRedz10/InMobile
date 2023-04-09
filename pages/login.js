@@ -109,7 +109,7 @@ export default function LoginForm() {
             />
           </Stack>
           <Text fontSize={"sm"} align={"center"} color={"gray.500"}>
-            Don't have an account?        
+            Do not have an account?        
           </Text>
           <Link  align={"center"} color={"blue.400"}> Sign up</Link>
         </Stack>
