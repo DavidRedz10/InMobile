@@ -9,7 +9,7 @@ const MENU_LIST = [
   { text: "Sale", href: "/search?purpose=for-sale" },
   { text: "Rent", href: "/search?purpose=for-rent" },
   { text: "AI", href: "/dalle" },
-  { text: "Profile", href: "/profile" },
+  { text: "Profile", href: "/login" },
 ];
 
 const Navbar = () => {
