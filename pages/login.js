@@ -111,7 +111,7 @@ export default function LoginForm() {
           <Text fontSize={"sm"} align={"center"} color={"gray.500"}>
             Do not have an account?        
           </Text>
-          <Link  align={"center"} color={"blue.400"}> Sign up</Link>
+          <Link  href="/profile" align={"center"} color={"blue.400"}> Sign up</Link>
         </Stack>
       </Box>
     </Flex>
