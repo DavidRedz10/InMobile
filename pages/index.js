@@ -36,11 +36,19 @@ export default function Home({ propertiesForSale, propertiesForRent}) {
       imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
 
-      <Flex justifyContent="center" alignItems="center">
-      <Link href="/add">  
+      <Flex justifyContent="center" alignItems="center" >
+
+      <Link href="/add" style={{ marginRight: '1rem' }} >  
       <Button colorScheme='green'>Añade tu propiedad</Button>
       </Link>
+
+      <Link href="/quiz">  
+      <Button colorScheme='red'>Dejanos saber tus gustos</Button>
+      </Link>
+
       </Flex>
+
+
 
       <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
       {propertiesForRent.map((property) => <Property property={property} key={property.id} />)}
