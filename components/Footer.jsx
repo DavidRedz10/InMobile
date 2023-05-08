@@ -20,13 +20,6 @@ const Footer = () => (
                  <li>
                     <a href="#" class="hover:underline cursor-pointer">Footerlink 2</a>
                 </li>
-                 <li>
-                    <a href="#" class="hover:underline cursor-pointer">Footerlink 3</a>
-                </li>
-                 <li>
-                    <a href="#" class="hover:underline cursor-pointer">Footerlink 4</a>
-                </li>
-
             </ul>
         </div>
         <div class="">
