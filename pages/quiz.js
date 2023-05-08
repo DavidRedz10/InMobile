@@ -37,7 +37,7 @@
 
 import { useState, useEffect } from 'react';
 import { firestore } from '../lib/firebase';
-import Question from '../components/question';
+import Question from '../components/Question';
 import { Card, Center, ChakraBaseProvider } from '@chakra-ui/react';
 import { Box, Button, FormControl, FormLabel, Radio, RadioGroup, Stack, Text, ChakraProvider } from '@chakra-ui/react';
 
