@@ -104,7 +104,7 @@ const ejemploPropiedad = {
     id:182679014,
     externalID:"117526079",
     title:null,
-    url:"https://bayut-production.s3.eu-central-1.amazonaws.com/image/182679014/41846f1803ea438cb79aef5a6ad1ff91",
+    url:"https://www.upsocl.com/wp-content/uploads/2020/03/0000-131.jpg",
     orderIndex:0,
     nimaScore:8.368842123425566,
     main:true},
@@ -132,7 +132,7 @@ const userData = {
       title: 'Apartamento en El Poblado',
       description: 'Apartamento con excelente ubicación en El Poblado, cuenta con 3 habitaciones, 2 baños, sala, comedor y cocina integral.',
       price: '$350.000.000 COP',
-      image: 'https://i.ytimg.com/vi/Oc1lqGImim0/maxresdefault.jpg',
+      image: 'https://www.upsocl.com/wp-content/uploads/2020/03/0000-131.jpg',
     },
     {
       id: 8,
