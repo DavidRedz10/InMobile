@@ -38,15 +38,16 @@ export default function Home({ propertiesForSale, propertiesForRent}) {
 
       <Flex justifyContent="center" alignItems="center" >
 
-      <Link href="/add" style={{ marginRight: '1rem' }} >  
+      <Link href="/add" style={{ marginBottom: '1rem' }} >  
       <Button colorScheme='green'>Añade tu propiedad</Button>
       </Link>
-
-      <Link href="/quiz">  
+      </Flex>
+      <Flex justifyContent="center" alignItems="center" >
+      <Link href="/quiz" style={{ marginBottom: '1rem' }}>  
       <Button colorScheme='red'>Dejanos saber tus gustos</Button>
       </Link>
-
       </Flex>
+     
 
 
 
