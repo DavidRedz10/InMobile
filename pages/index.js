@@ -1,94 +1,130 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { Flex, Box, Text, Button, Divider } from '@chakra-ui/react';
+import Link from "next/link";
+import Image from "next/image";
+import { Flex, Box, Text, Button, Divider } from "@chakra-ui/react";
 
-import { baseUrl, fetchApi } from '../utils/fetchApi';
-import Property from '../components/Property';
+import { baseUrl, fetchApi } from "../utils/fetchApi";
+import Property from "../components/Property";
+import FloatingButton from "../components/FloatingButton";
 
-const Banner = ({purpose, title1 , title2 , desc1, desc2, buttonText, linkName, imageUrl, icono}) => (
-  <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10"  >
-    <Image style={{borderRadius: '30px', overflow: 'hidden'}} src={imageUrl} width={500} height={100} alt="banner" />
-    <Box p="5" >
-    <Text color="blue.100" fontSize="sm" fontWeight="medium" >{purpose}</Text>
-    <Text fontSize="3xl" fontWeight="bold" >{title1}<br/>{title2}</Text>
-    <Text fontSize="lg"  paddingTop="3" paddingEnd="3" color="gray.700" >{desc1}<br/>{desc2}</Text>
-    <Button fontSize="xl" backgroundColor={'blue.100'} variant='outline'>
-      <Link href={linkName}>{buttonText}</Link>
-    </Button>
+const Banner = ({
+  purpose,
+  title1,
+  title2,
+  desc1,
+  desc2,
+  buttonText,
+  linkName,
+  imageUrl,
+}) => (
+  <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
+    <Image
+      style={{ borderRadius: "30px", overflow: "hidden" }}
+      src={imageUrl}
+      width={500}
+      height={100}
+      alt="banner"
+    />
+    <Box p="5">
+      <Text color="blue.100" fontSize="sm" fontWeight="medium">
+        {purpose}
+      </Text>
+      <Text fontSize="3xl" fontWeight="bold">
+        {title1}
+        <br />
+        {title2}
+      </Text>
+      <Text fontSize="lg" paddingTop="3" paddingEnd="3" color="gray.700">
+        {desc1}
+        <br />
+        {desc2}
+      </Text>
+      <Button fontSize="xl" backgroundColor={"blue.100"} variant="outline">
+        <Link href={linkName}>{buttonText}</Link>
+      </Button>
     </Box>
   </Flex>
-)
+);
 
-
-export default function Home({ propertiesForSale, propertiesForRent}) {
-  
+export default function Home({ propertiesForSale, propertiesForRent }) {
   return (
     <Box>
-      
-      <Banner     
-      purpose="RENT A HOME"
-      title1="Rental Homes for"
-      title2="Everyone"
-      desc1="Explore Aparments, Villas, Homes"
-      desc2="and more"
-      buttonText="Explore Renting"
-      linkName="/search?purpose=for-rent"
-      imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
+      <Banner
+        purpose="RENT A HOME"
+        title1="Rental Homes for"
+        title2="Everyone"
+        desc1="Explore Aparments, Villas, Homes"
+        desc2="and more"
+        buttonText="Explore Renting"
+        linkName="/search?purpose=for-rent"
+        imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
 
-      <Flex justifyContent="center" alignItems="center" >
-
-      <Link href="/add" style={{ marginBottom: '1rem' }} >  
-      <Button colorScheme='green'>Añade tu propiedad</Button>
+      <Link href="/add" >
+      <FloatingButton>
+      <Button size="lg" aria-label="Add item" position="fixed"
+        bottom={4}
+        right={4}
+        zIndex="docked"
+        justifyContent="center"
+        alignItems="center"
+        width="4rem"
+        height="4rem"
+        borderRadius="full"
+        boxShadow="lg"
+        bg="blue.200"
+        color="blue">
+          +
+        </Button>
+      </FloatingButton>
       </Link>
+      <Flex justifyContent="center" alignItems="center">
+        <Link href="/quiz" style={{ marginBottom: "1rem" }}>
+          <Button colorScheme="red">Dejanos saber tus gustos</Button>
+        </Link>
       </Flex>
-      <Flex justifyContent="center" alignItems="center" >
-      <Link href="/quiz" style={{ marginBottom: '1rem' }}>  
-      <Button colorScheme='red'>Dejanos saber tus gustos</Button>
-      </Link>
-      </Flex>
-     
-
-
 
       <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
-      {propertiesForRent.map((property) => <Property property={property} key={property.id} />)}
+        {propertiesForRent.map((property) => (
+          <Property property={property} key={property.id} />
+        ))}
       </Flex>
 
       <Divider paddingBottom={4} />
-      
-      <Banner 
-      purpose='BUY A HOME'
-      title1=' Find, Buy & Own Your'
-      title2='Dream Home'
-      desc1=' Explore from Apartments, land,'
-      desc2=' villas and more'
-      buttonText='Explore Buying'
-      linkName='/search?purpose=for-sale'
-      imageUrl='https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008'
+
+      <Banner
+        purpose="BUY A HOME"
+        title1=" Find, Buy & Own Your"
+        title2="Dream Home"
+        desc1=" Explore from Apartments, land,"
+        desc2=" villas and more"
+        buttonText="Explore Buying"
+        linkName="/search?purpose=for-sale"
+        imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
       />
 
+      <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
+        {propertiesForSale.map((property) => (
+          <Property property={property} key={property.id} />
+        ))}
+      </Flex>
 
-      <Flex flexWrap="wrap" justifyContent="center" alignItems="center" >
-      {propertiesForSale.map((property) => <Property property={property} key={property.id} />)}
-      </Flex>  
-
-
-      <Divider/>
-    </Box>   
-  )
+      <Divider />
+    </Box>
+  );
 }
 
 export async function getStaticProps() {
-  const propertyForSale = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`);
-  const propertyForRent = await fetchApi(`${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=9`);
+  const propertyForSale = await fetchApi(
+    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`
+  );
+  const propertyForRent = await fetchApi(
+    `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-rent&hitsPerPage=9`
+  );
 
   return {
     props: {
       propertiesForSale: propertyForSale?.hits,
       propertiesForRent: propertyForRent?.hits,
-    }
-  }
+    },
+  };
 }
-
- 
