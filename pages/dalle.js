@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import { InputBox } from "../components/InputBox";
-import { Button, Heading, Img } from '@chakra-ui/react'
+import { Button, Heading, Img, Flex } from '@chakra-ui/react'
 
 const configuration = new Configuration({
     apiKey: process.env.NEXT_PUBLIC_REACT,
@@ -29,14 +29,14 @@ function App() {
   };
 
   return (
-    <main className="App">
+    <Flex>
       <Heading marginInline="50px">Describenos tu casa ideal y te planteamos ideas de como luciria!</Heading>
       {imageUrl && <Img src={imageUrl} className="image" alt="ai thing" />}
       <InputBox setAttribute={setUserPrompt} />
       <Button className="main-button" onClick={() => generateImage()}>
         Generar
       </Button>
-    </main>
+    </Flex>
   );
 }
 
