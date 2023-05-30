@@ -1,10 +1,68 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Flex, Box, Text, Button, Divider } from "@chakra-ui/react";
+import { Flex, Box, Text, Button, Collapse } from "@chakra-ui/react";
+import { useEffect, useRef, useState } from "react";
 
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 import Property from "../components/Property";
 import FloatingButton from "../components/FloatingButton";
+
+function YouTubeVideo({ videoId }) {
+  const playerRef = useRef(null);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.youtube.com/iframe_api";
+    script.async = true;
+    document.body.appendChild(script);
+
+    window.onYouTubeIframeAPIReady = initializePlayer;
+
+    return () => {
+      window.onYouTubeIframeAPIReady = null;
+    };
+  }, []);
+
+  const initializePlayer = () => {
+    playerRef.current = new window.YT.Player("youtube-player", {
+      videoId: videoId,
+      playerVars: {
+        autoplay: 1,
+        mute: 1,
+        loop: 1,
+        controls: 0,
+        modestbranding: 1,
+        showinfo: 0,
+        disablekb: 1,
+        enablejsapi: 1,
+        iv_load_policy: 3, // Oculta el título inicial y la imagen de vista previa del video
+      },
+      events: {
+        onReady: onPlayerReady,
+        onStateChange: onPlayerStateChange,
+      },
+    });
+  };
+
+  const onPlayerReady = (event) => {
+    event.target.playVideo();
+    event.target.setPlaybackQuality("hd720");
+    event.target.setOption("captions", "off");
+  };
+
+  const onPlayerStateChange = (event) => {
+    if (event.data === window.YT.PlayerState.ENDED) {
+      event.target.playVideo();
+    }
+  };
+
+  return (
+    <div
+      id="youtube-player"
+      style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+    ></div>
+  );
+}
 
 const Banner = ({
   purpose,
@@ -14,68 +72,109 @@ const Banner = ({
   desc2,
   buttonText,
   linkName,
-  imageUrl,
-}) => (
-  <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
-    <Image
-      style={{ borderRadius: "30px", overflow: "hidden" }}
-      src={imageUrl}
-      width={500}
-      height={100}
-      alt="banner"
-    />
-    <Box p="5">
-      <Text color="blue.100" fontSize="sm" fontWeight="medium">
-        {purpose}
-      </Text>
-      <Text fontSize="3xl" fontWeight="bold">
-        {title1}
-        <br />
-        {title2}
-      </Text>
-      <Text fontSize="lg" paddingTop="3" paddingEnd="3" color="gray.700">
-        {desc1}
-        <br />
-        {desc2}
-      </Text>
-      <Button fontSize="xl" backgroundColor={"blue.100"} variant="outline">
-        <Link href={linkName}>{buttonText}</Link>
-      </Button>
-    </Box>
-  </Flex>
-);
+}) => {
+  const [isCardOpen, setIsCardOpen] = useState(false);
+
+  return (
+    <Flex flexWrap="wrap" justifyContent="center" alignItems="center" m="10">
+      <Box
+        position="relative"
+        borderRadius="30px"
+        overflow="hidden"
+        width={500}
+        height={281} // Ajusta la altura proporcionalmente al ancho para mantener la relación de aspecto del video
+        objectFit="cover"
+      >
+        <YouTubeVideo videoId="VMZr8ushf4c" />
+      </Box>
+      <Box p="5">
+        <Text
+          color="blue.100"
+          fontSize="3xl"
+          fontWeight="medium"
+          id="purposeText"
+          sx={{
+            backgroundImage:
+              "url(https://media.istockphoto.com/id/1185382671/es/vector/fondo-colorido-borroso-abstracto.jpg?s=612x612&w=0&k=20&c=MJ_7Wn1L45PM0Ilo0cgLs4h2SRRoi7rEj-Rau8tkYM8=)",
+            WebkitTextFillColor: "transparent",
+            WebkitBackgroundClip: "text",
+          }}
+        >
+          {purpose}
+        </Text>
+        <Text fontSize="3xl" fontWeight="bold">
+          {title1}
+          <br />
+          {title2}
+        </Text>
+        <Text fontSize="lg" paddingTop="3" paddingEnd="3" color="gray.700">
+          {desc1}
+          <br />
+          {desc2}
+        </Text>
+        <Button
+          fontSize="xl"
+          bgImage="url('https://definicion.de/wp-content/uploads/2011/01/casa-2.jpg')"
+          variant="outline"
+          onClick={() => setIsCardOpen(!isCardOpen)}
+        >
+      
+            <Text
+              color="gray.100"
+              fontSize="1xl"
+              fontWeight="Bold"
+              id="purposeText"
+            >
+              {buttonText}
+            </Text>
+        
+        </Button>
+        <Collapse in={isCardOpen} animateOpacity>
+          <Box p="5" mt="4" borderRadius="md" boxShadow="lg" bg="white" maxW="md">
+            <Text fontSize="lg" padding="3" color="gray.700">
+              Aquí puedes incluir información sobre los algoritmos de recomendación.
+            </Text>
+          </Box>
+        </Collapse>
+      </Box>
+    </Flex>
+  );
+};
 
 export default function Home({ propertiesForSale, propertiesForRent }) {
   return (
     <Box>
       <Banner
-        purpose="RENT A HOME"
-        title1="Rental Homes for"
-        title2="Everyone"
-        desc1="Explore Aparments, Villas, Homes"
+        purpose="Inmobile"
+        title1="IA Home Searching"
+        title2="For everyone"
+        desc1="Explore Apartments, Villas, Homes"
         desc2="and more"
-        buttonText="Explore Renting"
+        buttonText="Explore IA Match"
         linkName="/search?purpose=for-rent"
-        imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
 
-      <Link href="/add" >
-      <FloatingButton>
-      <Button size="lg" aria-label="Add item" position="fixed"
-        bottom={4}
-        right={4}
-        zIndex="docked"
-        justifyContent="center"
-        alignItems="center"
-        width="4rem"
-        height="4rem"
-        borderRadius="full"
-        boxShadow="lg"
-        bg="blue.200"
-        color="blue">
-          +
-        </Button>
-      </FloatingButton>
+      <Link href="/add">
+        <FloatingButton>
+          <Button
+            size="lg"
+            aria-label="Add item"
+            position="fixed"
+            bottom={4}
+            right={4}
+            zIndex="docked"
+            justifyContent="center"
+            alignItems="center"
+            width="4rem"
+            height="4rem"
+            borderRadius="full"
+            boxShadow="lg"
+            bg="blue.200"
+            color="blue"
+          >
+            +
+          </Button>
+        </FloatingButton>
       </Link>
       <Flex justifyContent="center" alignItems="center">
         <Link href="/quiz" style={{ marginBottom: "1rem" }}>
@@ -88,27 +187,6 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
           <Property property={property} key={property.id} />
         ))}
       </Flex>
-
-      <Divider paddingBottom={4} />
-
-      <Banner
-        purpose="BUY A HOME"
-        title1=" Find, Buy & Own Your"
-        title2="Dream Home"
-        desc1=" Explore from Apartments, land,"
-        desc2=" villas and more"
-        buttonText="Explore Buying"
-        linkName="/search?purpose=for-sale"
-        imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
-      />
-
-      <Flex flexWrap="wrap" justifyContent="center" alignItems="center">
-        {propertiesForSale.map((property) => (
-          <Property property={property} key={property.id} />
-        ))}
-      </Flex>
-
-      <Divider />
     </Box>
   );
 }
