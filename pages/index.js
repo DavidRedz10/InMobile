@@ -85,7 +85,7 @@ const Banner = ({
         height={281} // Ajusta la altura proporcionalmente al ancho para mantener la relación de aspecto del video
         objectFit="cover"
       >
-        <YouTubeVideo videoId="VMZr8ushf4c" />
+        <YouTubeVideo videoId="lHOOMnYDg2g" />
       </Box>
       <Box p="5">
         <Text
