@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Flex, Box, Text, Button, Collapse } from "@chakra-ui/react";
+import { Flex, Box, Text, Button, Collapse, Card } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 
 import { baseUrl, fetchApi } from "../utils/fetchApi";
@@ -113,6 +113,7 @@ const Banner = ({
           {desc2}
         </Text>
         <Button
+          marginTop={3}
           fontSize="xl"
           bgImage="url('https://definicion.de/wp-content/uploads/2011/01/casa-2.jpg')"
           variant="outline"
@@ -130,18 +131,18 @@ const Banner = ({
         
         </Button>
         <Collapse in={isCardOpen} animateOpacity>
-          <Box p="5" mt="4" borderRadius="md" boxShadow="lg" bg="white" maxW="md">
-            <Text fontSize="lg" padding="3" color="gray.700">
-              Aquí puedes incluir información sobre los algoritmos de recomendación.
+          <Card p="5" mt="4" borderRadius="md" boxShadow="lg" bgColor={"gray.100"} maxW="md">
+            <Text fontSize="lg" padding="3" color="black.100" fontWeight={"bold"}>
+            Encontrar la casa perfecta puede ser abrumador, pero no te preocupes, estamos aquí para simplificar el proceso. Nuestra aplicación utiliza tecnología de vanguardia para brindarte una experiencia de búsqueda de propiedades inmobiliarias como ninguna otra.
             </Text>
-          </Box>
+          </Card>
         </Collapse>
       </Box>
     </Flex>
   );
 };
 
-export default function Home({ propertiesForSale, propertiesForRent }) {
+export default function Home({ propertiesForRent }) {
   return (
     <Box>
       <Banner
