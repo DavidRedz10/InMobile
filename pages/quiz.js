@@ -48,9 +48,11 @@ import {
   SliderTrack,
   SliderFilledTrack,
   SliderThumb,
+  Link
 } from "@chakra-ui/react";
 import Property from "../components/Property";
 import { MdStar } from "react-icons/md";
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const [preguntas, setPreguntas] = useState([]);
@@ -308,7 +310,7 @@ export default function Home() {
         </Box>
       )}
 
-      {datos.hasOwnProperty("calificacion2") && (
+      {datos.hasOwnProperty("calificacion2") && !datos.hasOwnProperty("calificacion3") && (
         <Box
           width={["100%", "80%", "50%"]}
           margin="0 auto"
@@ -364,7 +366,7 @@ export default function Home() {
               {calificacion3}
             </Text>
           </Box>
-          {/* Botón para enviar el quiz */}
+          {/* Botón para enviar el quiz */} 
           <Button
             colorScheme="blue"
             size="lg"
@@ -373,27 +375,32 @@ export default function Home() {
           >
             Enviar
           </Button>
+
+          
         </Box>
       )}
 
       
-
+      <Link href="/results">
       <Button
         colorScheme="red"
         size="lg"
         mt="2rem"
-        onClick={() => console.log(datos)}
+        
       >
-        Finalizar
+        Seguir a resultados
       </Button>
+      </Link>
+      {datos.hasOwnProperty("calificacion3") && (
       <Button
         colorScheme="red"
         size="lg"
         mt="2rem"
         onClick={() => console.log(nuevoObjeto)}
       >
-        Mostrar Nuevo
+        Mostrar Arreglo consola
       </Button>
+      )}
     </ChakraProvider>
   );
 }

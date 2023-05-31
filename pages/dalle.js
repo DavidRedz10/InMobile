@@ -3,6 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 import { InputBox } from "../components/InputBox";
 import { Button, Heading, Img, Flex } from '@chakra-ui/react'
 
+
 const configuration = new Configuration({
   apiKey: process.env.NEXT_PUBLIC_REACT,
 });

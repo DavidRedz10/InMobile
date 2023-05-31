@@ -16,6 +16,7 @@
     "admin": "^1.4.1",
     "animate.css": "^4.1.1",
     "axios": "^1.2.2",
+    "dotenv": "^16.1.1",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "firebase": "^8.10.1",
