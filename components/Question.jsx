@@ -5,6 +5,7 @@ const Question = ({ pregunta, opciones, handleNextQuestion, hijoAPadre }) => {
   const [selectedOption, setSelectedOption] = useState("");
   const [respuestas, setRespuestas] = useState([]);
   const datos = respuestas;
+  const [error, setError] = useState("");
 
   const handleOptionChange = (e, opcion) => {
     setSelectedOption(e.target.value);
@@ -12,18 +13,23 @@ const Question = ({ pregunta, opciones, handleNextQuestion, hijoAPadre }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Crea un objeto con la pregunta y la respuesta y agrégalo al estado
-    //  const respuesta = { pregunta, respuesta: selectedOption };
-    //  setRespuestas([...respuestas, respuesta]);
+
+    if (selectedOption === "") {
+      setError("Por favor, selecciona una opción");
+      return; // Detener la ejecución si no se selecciona una opción
+    }
+
     const respuesta = selectedOption;
     setRespuestas([...respuestas, respuesta]);
     setSelectedOption("");
+    setError(""); // Limpiar el mensaje de error
     handleNextQuestion();
   };
 
   const mostrar = () => {
     console.log(respuestas);
   };
+
   return (
     <Box
       width={["100%", "80%", "50%"]}
@@ -43,7 +49,7 @@ const Question = ({ pregunta, opciones, handleNextQuestion, hijoAPadre }) => {
               <input
                 style={{ marginRight: "0.5rem" }}
                 margin={1}
-                type="Radio"
+                type="radio"
                 value={opcion}
                 checked={selectedOption === opcion}
                 onChange={handleOptionChange}
@@ -52,6 +58,8 @@ const Question = ({ pregunta, opciones, handleNextQuestion, hijoAPadre }) => {
             </label>
           </Box>
         ))}
+
+        {error && <Text color="red">{error}</Text>}
 
         <Button
           type="submit"
